@@ -79,9 +79,6 @@ id_rsa
 id_ed25519
 !*.pub
 
-# --- Subrepo con remoto propio en GitLab (ca-group4/reporting-infra-phase1-landing-ingestion) ---
-reporting-infra-phase1-landing-ingestion/
-
 # --- Protección extra para repos anidados y artefactos locales ---
 **/.git/
 **/.git/**
