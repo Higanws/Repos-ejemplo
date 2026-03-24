@@ -1,0 +1,12 @@
+{
+  "role": "input_contract",
+  "description": "Lo que el job validated→standardized espera encontrar bajo validated/trade_event/ (1:1 campos/tipos tras validación RAW).",
+  "format": "json",
+  "required": ["external_event_id", "session_date", "event_datetime"],
+  "properties": {
+    "external_event_id": { "type": "string" },
+    "session_date": { "type": "string" },
+    "event_datetime": { "type": "string" }
+  },
+  "note": "Completar con el mismo conjunto estricto que trade_event.contract.json en fase 1 o referenciar el mismo esquema en despliegue."
+}

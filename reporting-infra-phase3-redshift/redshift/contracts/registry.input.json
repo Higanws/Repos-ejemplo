@@ -1,0 +1,18 @@
+{
+  "contract_set_id": "reporting-redshift-from-silver",
+  "contract_set_version": "1.0.0",
+  "description": "Contratos de ENTRADA que los COPY / jobs SQL esperan respecto a datos en S3 silver (Parquet) antes de cargar Redshift.",
+  "previous_layer": "lake_standardized_to_silver",
+  "loads": [
+    {
+      "script": "copy_s3_to_silver/trade_event_parquet_s3_to_silver_fact.sql",
+      "table": "trade_event",
+      "input_contract": "input/trade_event.from_silver_parquet.json"
+    },
+    {
+      "script": "copy_s3_to_silver/price_history_parquet_s3_to_silver_fact.sql",
+      "table": "price_history",
+      "input_contract": "input/price_history.from_silver_parquet.json"
+    }
+  ]
+}

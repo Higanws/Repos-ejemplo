@@ -1,0 +1,13 @@
+aws_region = "sa-east-1"
+project    = "reporting"
+environment = "dev"
+
+# Opcional si el repo schema-registry no está como hermano:
+# schema_registry_repository_root = "C:/ruta/absoluta/reporting-infra-schema-registry"
+
+# Debe coincidir con el backend/key de la fase 1 tras el primer apply:
+# phase1_state_key = "reporting-phase1-landing-ingestion/dev/terraform.tfstate"
+
+# Cadena por DynamoDB Stream (routers por fase en 2 y 3):
+# enable_pipeline_ddb_stream_chain = true
+# Aplicar dynamo-platform antes (tabla con stream + output dynamodb_stream_arn).

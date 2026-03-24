@@ -1,0 +1,14 @@
+{
+  "glue": [
+    "glue/standardized_s3/trade_event.sql",
+    "glue/standardized_s3/price_history.sql",
+    "glue/silver_s3/trade_event.sql",
+    "glue/silver_s3/price_history.sql"
+  ],
+  "redshift": [
+    "redshift/silver/trade_event.sql",
+    "redshift/silver/price_history.sql",
+    "redshift/gold/silver_pnl_daily.sql",
+    "redshift/gold/gold_report_pnl.sql"
+  ]
+}

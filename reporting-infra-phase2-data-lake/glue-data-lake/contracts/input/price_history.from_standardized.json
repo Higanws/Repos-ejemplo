@@ -1,0 +1,7 @@
+{
+  "role": "input_contract",
+  "description": "Entrada esperada para standardized→silver (price_history).",
+  "format": "parquet_logical",
+  "required_columns": [],
+  "note": "Definir columnas y tipos 1:1 con el esquema Glue de standardized para price_history."
+}

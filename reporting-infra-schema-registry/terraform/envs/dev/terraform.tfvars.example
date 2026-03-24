@@ -1,0 +1,17 @@
+aws_region   = "sa-east-1"
+project      = "reporting"
+environment  = "dev"
+
+# Opcional: si el repo no está como hermano de terraform/envs/dev
+# schema_registry_repository_root = "C:/ruta/reporting-infra-schema-registry"
+
+# Remote states de fase 2 y fase 3
+# phase2_state_bucket = "..."
+# phase2_state_key    = "reporting-phase2-data-lake/dev/terraform.tfstate"
+# phase3_state_bucket = "..."
+# phase3_state_key    = "reporting-phase3-redshift/dev/terraform.tfstate"
+
+# Auto-ejecución en cada apply
+invoke_on_apply = true
+invoke_target   = "all"  # all | glue | redshift
+invoke_force_ddl = false

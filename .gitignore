@@ -1,0 +1,89 @@
+# ------------------------------------------------------------------------------
+# Reporting workspace — Repos-ejemplo
+# Objetivo: no versionar estado Terraform, cachés de proveedores, secretos ni basura
+# de IDE/OS. Los *.tfvars.example y terraform.lock.hcl SÍ deben subirse.
+# ------------------------------------------------------------------------------
+
+# --- Terraform ---
+**/.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+*.tfplan
+*.plan
+
+# Variables con secretos / valores locales (copiar desde *.tfvars.example)
+*.tfvars
+!*.tfvars.example
+*.auto.tfvars
+!*.auto.tfvars.example
+
+# Lock file de Terraform: conviene VERSIONARLO (no ignorar .terraform.lock.hcl)
+
+# Artefactos de empaquetado Lambda / builds locales
+**/.build/
+**/dist/
+**/*.zip
+
+# --- Python ---
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+.Python
+*.egg-info/
+.eggs/
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# --- Node (si algún subproyecto lo usa) ---
+**/node_modules/
+
+# --- IDE / editor ---
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# --- Sistema operativo ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# --- Logs y temporales ---
+*.log
+tmp/
+temp/
+
+# --- Claves y certificados locales (nunca al repo) ---
+*.pem
+*.p12
+id_rsa
+id_ed25519
+!*.pub
+
+# --- Subrepo con remoto propio en GitLab (ca-group4/reporting-infra-phase1-landing-ingestion) ---
+reporting-infra-phase1-landing-ingestion/
+
+# --- Protección extra para repos anidados y artefactos locales ---
+**/.git/
+**/.git/**
+**/.terraform/providers/**
+**/.terraform/modules/**

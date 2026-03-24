@@ -1,0 +1,12 @@
+{
+  "role": "input_contract",
+  "description": "Cabecera y tipos esperados del CSV bajo validated/price_history/.",
+  "format": "csv",
+  "required_columns": ["session_date", "instrument_id", "price"],
+  "column_types": {
+    "session_date": "string",
+    "instrument_id": "string",
+    "price": "number"
+  },
+  "note": "Alinear al contrato RAW price_history; ampliar columnas a lista completa 1:1."
+}

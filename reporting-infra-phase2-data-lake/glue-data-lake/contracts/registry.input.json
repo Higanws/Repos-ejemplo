@@ -1,0 +1,34 @@
+{
+  "contract_set_id": "reporting-lake-from-validated",
+  "contract_set_version": "1.0.0",
+  "description": "Contratos de ENTRADA por dataset (prefijo S3 bajo validated/ o standardized/); no son tablas Glue en RAW.",
+  "previous_layer": "raw",
+  "jobs": [
+    {
+      "id": "validated_to_standardized",
+      "input_datasets": [
+        {
+          "name": "trade_event",
+          "input_contract": "input/trade_event.from_validated.json"
+        },
+        {
+          "name": "price_history",
+          "input_contract": "input/price_history.from_validated.json"
+        }
+      ]
+    },
+    {
+      "id": "standardized_to_silver",
+      "input_datasets": [
+        {
+          "name": "trade_event",
+          "input_contract": "input/trade_event.from_standardized.json"
+        },
+        {
+          "name": "price_history",
+          "input_contract": "input/price_history.from_standardized.json"
+        }
+      ]
+    }
+  ]
+}

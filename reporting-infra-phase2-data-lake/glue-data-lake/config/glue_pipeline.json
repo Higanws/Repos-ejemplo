@@ -1,0 +1,13 @@
+{
+  "dataset_order": ["trade_event", "price_history"],
+  "raw_subprefix": "validated",
+  "raw_formats": {
+    "trade_event": {
+      "format": "json",
+      "flatten_payload": true
+    },
+    "price_history": {
+      "format": "csv"
+    }
+  }
+}

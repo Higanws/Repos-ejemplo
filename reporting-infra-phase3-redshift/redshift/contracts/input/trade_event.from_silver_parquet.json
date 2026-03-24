@@ -1,0 +1,7 @@
+{
+  "role": "input_contract",
+  "description": "Columnas y tipos esperados en Parquet silver para COPY trade_event (alinear con DDL silver).",
+  "format": "parquet_logical",
+  "required_columns": [],
+  "note": "Completar 1:1 con reporting-infra-schema-registry/schemas/redshift/silver y columnas del COPY."
+}

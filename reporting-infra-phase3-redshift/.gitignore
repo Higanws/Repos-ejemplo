@@ -1,0 +1,10 @@
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+.terraform.tfstate.lock.info
+terraform/envs/dev/.build/
+
+# Python
+__pycache__/
+*.py[cod]

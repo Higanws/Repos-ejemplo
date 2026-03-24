@@ -1,0 +1,7 @@
+{
+  "role": "input_contract",
+  "description": "Columnas y tipos esperados en Parquet silver para COPY price_history.",
+  "format": "parquet_logical",
+  "required_columns": [],
+  "note": "Completar 1:1 con DDL y COPY."
+}

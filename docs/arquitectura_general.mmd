@@ -1,0 +1,93 @@
+flowchart LR
+  subgraph Git[Git y CI]
+    G1[Repos por fase]
+    G2[Tag release vX.Y.Z]
+    G3[Pipeline CI OIDC]
+  end
+
+  subgraph TF[Terraform]
+    T0[dynamo-platform]
+    T1[phase1-ingestion]
+    T3[phase3-redshift]
+    T2[phase2-data-lake]
+    T4[schema-registry]
+  end
+
+  subgraph AWS[AWS Runtime]
+    subgraph DYN[Dynamo Platform]
+      D1[(DynamoDB pipeline_runs + Stream)]
+      D2[S3 archive]
+      D3[Lambda archive]
+    end
+
+    subgraph P1[Fase 1]
+      A1[EventBridge cron]
+      A2[SFN04 ingest]
+      A3[Lambda raw_ingestion]
+      A4[(S3 RAW validated/rejected)]
+    end
+
+    subgraph P2[Fase 2]
+      R2[Lambda lake_pipeline_stream_router]
+      B2[Glue validated_to_standardized]
+      B3[Glue standardized_to_silver]
+      B4[Lambda glue_job_status_dynamo]
+      B5[Lambda glue_schema_athena]
+      B6[(S3 standardized)]
+      B7[(S3 silver)]
+      B8[(S3 artifacts/Athena)]
+    end
+
+    subgraph P3[Fase 3]
+      R3[Lambda redshift_sfn_stream_router]
+      C1[SFN COPY]
+      C2[SFN GOLD]
+      C3[Lambda redshift_sql]
+      C4[(Redshift Serverless)]
+    end
+
+    subgraph SR[Schema Registry]
+      S1[Lambda schema-registry-apply]
+    end
+  end
+
+  G1 --> G2 --> G3
+  G3 --> T0
+  G3 --> T1
+  G3 --> T3
+  G3 --> T2
+  G3 --> T4
+
+  T0 --> D1
+  T0 --> D2
+  T0 --> D3
+  T1 --> A1
+  T1 --> A2
+  T1 --> A3
+  T2 --> R2
+  T2 --> B2
+  T2 --> B3
+  T2 --> B4
+  T2 --> B5
+  T3 --> R3
+  T3 --> C1
+  T3 --> C2
+  T3 --> C3
+  T3 --> C4
+  T4 --> S1
+
+  A1 --> A2 --> A3 --> A4
+  A3 -. escribe capa raw .-> D1
+  D1 -->|stream raw OK| R2 --> B2 --> B6
+  B2 --> B4 --> D1
+  D1 -->|stream lake_validated OK| R2 --> B3 --> B7
+  B3 --> B4 --> D1
+  D1 -->|stream lake_std_to_silver OK| R3 --> C1 --> C3 --> C4
+  C1 --> C3 --> D1
+  D1 -->|stream redshift_silver OK| R3 --> C2 --> C3 --> C4
+  C2 --> C3 --> D1
+
+  B5 --> B8
+  C3 --> B8
+  S1 -. crea/actualiza Glue tables .-> B8
+  S1 -. crea/actualiza Redshift tables .-> C4

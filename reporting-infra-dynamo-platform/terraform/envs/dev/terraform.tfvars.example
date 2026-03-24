@@ -1,0 +1,7 @@
+aws_region   = "sa-east-1"
+project      = "reporting"
+environment  = "dev"
+# Retención en tabla antes de candidato a archivo (job lunes)
+retention_days = 30
+# archive_schedule_cron = "cron(0 0 ? * MON *)"
+# enable_archive_lambda = true

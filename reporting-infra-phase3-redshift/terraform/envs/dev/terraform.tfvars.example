@@ -1,0 +1,9 @@
+aws_region = "sa-east-1"
+project    = "reporting"
+environment = "dev"
+
+# phase3_repository_root = "C:/ruta/absoluta/al/repo-phase3"
+# schema_registry_repository_root = "C:/ruta/absoluta/reporting-infra-schema-registry"
+
+# redshift_publicly_accessible = true   # solo dev si hace falta
+# redshift_sql_secret_arn       = "arn:aws:secretsmanager:..."

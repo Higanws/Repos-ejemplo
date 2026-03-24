@@ -1,0 +1,7 @@
+{
+  "role": "input_contract",
+  "description": "Entrada esperada para standardized→silver (salida Parquet/tabla Glue del paso anterior).",
+  "format": "parquet_logical",
+  "required_columns": [],
+  "note": "Definir columnas y tipos 1:1 con el esquema Glue de standardized para trade_event."
+}
