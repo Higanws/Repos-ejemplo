@@ -1,0 +1,21 @@
+%% Arquitectura del flujo de ingesta (fase 1) y encadenamiento con fase 2 / Dynamo
+flowchart LR
+  subgraph ingest["Fase 1 — Lambda ingesta"]
+    API["APIs externas"]
+    V["Validación contractual"]
+    API --> V
+    V -->|ok| ValS3["S3 validated/"]
+    V -->|fail| RejS3["S3 rejected/"]
+  end
+
+  subgraph glue["Fase 2 — Glue"]
+    G["validated → standardized → silver"]
+    ValS3 --> G
+  end
+
+  subgraph chain["Cadena por capas + DynamoDB"]
+    DDB["pipeline_runs"]
+    EB["EventBridge / SFN por capa"]
+    G --> EB
+    EB --> DDB
+  end

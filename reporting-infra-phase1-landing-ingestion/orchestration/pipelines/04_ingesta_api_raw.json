@@ -1,0 +1,34 @@
+{
+  "Comment": "Orquestador 4: solo ingesta API -> RAW. EventBridge programado (cron).",
+  "StartAt": "IngestApisParallel",
+  "States": {
+    "IngestApisParallel": {
+      "Type": "Parallel",
+      "Branches": [
+        {
+          "StartAt": "IngestTradeEventApi",
+          "States": {
+            "IngestTradeEventApi": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "Parameters": { "FunctionName": "__RAW_INGEST_LAMBDA__", "Payload": { "job": "trade_event/ingest.py", "table": "trade_event" } },
+              "End": true
+            }
+          }
+        },
+        {
+          "StartAt": "IngestPriceHistoryApi",
+          "States": {
+            "IngestPriceHistoryApi": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "Parameters": { "FunctionName": "__RAW_INGEST_LAMBDA__", "Payload": { "job": "price_history/ingest.py", "table": "price_history" } },
+              "End": true
+            }
+          }
+        }
+      ],
+      "End": true
+    }
+  }
+}

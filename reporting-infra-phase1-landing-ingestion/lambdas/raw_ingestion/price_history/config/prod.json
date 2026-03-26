@@ -1,0 +1,8 @@
+{
+  "job_name": "gf_price_history_api_ingest_prod",
+  "api_endpoint": "https://api.example.com/v1/price-history/export",
+  "api_secret_name": "reporting/prod/apis/finanzas",
+  "raw_bucket": "",
+  "raw_prefix": "price_history",
+  "format": "csv"
+}

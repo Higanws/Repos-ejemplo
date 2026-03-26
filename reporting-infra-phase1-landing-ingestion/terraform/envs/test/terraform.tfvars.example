@@ -1,0 +1,13 @@
+aws_region  = "sa-east-1"
+project     = "reporting"
+environment = "test"
+
+# Debe coincidir con trade_event/config/test.json y price_history/config/test.json
+# phase1_repository_root = "C:/ruta/absoluta/reporting-infra-phase1-landing-ingestion"
+
+# Secreto (nombre distinto a dev/prod si querés aislar tokens):
+# create_ingest_api_secret = false
+# ingest_api_secret_name   = "reporting/test/apis/finanzas"
+
+# CloudWatch
+# lambda_log_retention_days = 14

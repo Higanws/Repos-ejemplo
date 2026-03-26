@@ -1,0 +1,17 @@
+{
+  "contract_set_id": "reporting-ingest-raw",
+  "contract_set_version": "1.0.0",
+  "description": "Contratos de ENTRADA que la ingesta valida al leer la API (payload) antes de escribir RAW.",
+  "tables": [
+    {
+      "name": "trade_event",
+      "input_contract": "trade_event.contract.json",
+      "format": "json"
+    },
+    {
+      "name": "price_history",
+      "input_contract": "price_history.contract.json",
+      "format": "csv"
+    }
+  ]
+}

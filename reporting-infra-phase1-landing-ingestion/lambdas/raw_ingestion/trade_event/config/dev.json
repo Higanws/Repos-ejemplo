@@ -1,0 +1,8 @@
+{
+  "job_name": "gf_trade_event_api_ingest_dev",
+  "api_endpoint": "https://api.example.com/v1/trade-events",
+  "api_secret_name": "reporting/dev/apis/finanzas",
+  "raw_bucket": "",
+  "raw_prefix": "trade_event",
+  "format": "json"
+}

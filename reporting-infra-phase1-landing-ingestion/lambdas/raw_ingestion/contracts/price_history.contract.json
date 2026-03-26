@@ -1,0 +1,27 @@
+{
+  "format": "csv",
+  "delimiter": ",",
+  "header": true,
+  "required_columns": [
+    "session_date",
+    "instrument_id",
+    "price_datetime",
+    "price",
+    "currency_code",
+    "price_source_id",
+    "is_closing_price",
+    "is_opening_price",
+    "ingestion_ts"
+  ],
+  "column_types": {
+    "session_date": "string",
+    "instrument_id": "string",
+    "price_datetime": "string",
+    "price": "number",
+    "currency_code": "string",
+    "price_source_id": "string",
+    "is_closing_price": "boolean",
+    "is_opening_price": "boolean",
+    "ingestion_ts": "string"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "format": "json",
+  "additionalProperties": false,
+  "required": [
+    "external_event_id",
+    "session_date",
+    "event_datetime",
+    "settlement_datetime",
+    "book_id",
+    "instrument_id",
+    "event_type_id",
+    "custody_country",
+    "nominal_delta",
+    "price",
+    "fees",
+    "fx_rate",
+    "currency_code",
+    "source_file",
+    "ingestion_ts"
+  ],
+  "properties": {
+    "external_event_id": { "type": "string" },
+    "session_date": { "type": "string" },
+    "event_datetime": { "type": "string" },
+    "settlement_datetime": { "type": "string" },
+    "book_id": { "type": "number" },
+    "instrument_id": { "type": "string" },
+    "event_type_id": { "type": "string" },
+    "custody_country": { "type": "string" },
+    "nominal_delta": { "type": "number" },
+    "price": { "type": "number" },
+    "fees": { "type": "number" },
+    "fx_rate": { "type": "number" },
+    "currency_code": { "type": "string" },
+    "source_file": { "type": "string" },
+    "ingestion_ts": { "type": "string" }
+  }
+}

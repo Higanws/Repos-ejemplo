@@ -1,0 +1,2 @@
+# Pruebas locales / CI. En Lambda 3.11 ya vienen boto3/botocore.
+boto3>=1.34.0,<2

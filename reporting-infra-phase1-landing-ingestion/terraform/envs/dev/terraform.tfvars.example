@@ -1,0 +1,26 @@
+aws_region   = "sa-east-1"
+project      = "reporting"
+environment  = "dev"
+
+# Debe coincidir con trade_event/config/dev.json y price_history/config/dev.json
+# phase1_repository_root = "C:/ruta/absoluta/reporting-infra-phase1-landing-ingestion"
+
+# Secreto API (Terraform puede crear el contenedor en Secrets Manager):
+# create_ingest_api_secret = false   # si ya existe el secreto con el mismo nombre en AWS
+# ingest_api_secret_name   = "reporting/dev/apis/finanzas"
+# NO pongas el token en un archivo que subas a Git. Opciones:
+#   - dejar ingest_api_secret_string sin definir y cargar el valor en consola AWS, o
+#   - terraform apply -var="ingest_api_secret_string=TU_TOKEN" (no queda en historial del repo)
+
+# CloudWatch: retención de logs de la Lambda de ingesta (días)
+# lambda_log_retention_days = 14
+
+# EventBridge cron de ingesta (SFN 04):
+# false = creado pero desactivado (default recomendado para primer deploy)
+# true  = habilitado automáticamente
+# enable_ingest_schedule = false
+
+# DynamoDB estado de corridas (tras desplegar reporting-infra-dynamo-platform):
+# enable_pipeline_dynamo = true
+# dynamo_platform_state_key = "reporting-dynamo-platform/dev/terraform.tfstate"
+# contract_set_version_phase1 = "1.0.0"
